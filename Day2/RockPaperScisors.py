@@ -2,29 +2,39 @@ f = open("input.txt","rt") #open file in read text mode
 win  = 0
 loss = 0
 tie  = 0
-pick = 0
+score = 0
 for line in f:
    line=line.rstrip()
-   if line == 'A X':
+   if line == 'A X': #rock rock
       tie+=1
-   elif line == 'A Y':
+      score+=4
+   elif line == 'A Y': #rock paper
+      win+=1
+      score+=8
+   elif line == 'A Z': #rock scissors
       loss+=1
-   elif line == 'A Z':
-      win+=1
-   elif line == 'B X':
-      win+=1
-   elif line == 'B Y':
+      score+=3
+   elif line == 'B X':#paper rock
+      loss+=1
+      score+=1
+   elif line == 'B Y': #paper paper
       tie+=1
-   elif line == 'B Z':
+      score+=5
+   elif line == 'B Z': #paper scissors
       loss+=1
-   elif line == 'C X':
-      loss+=1
-   elif line == 'C Y':
+      score+=9
+   elif line == 'C X': #scissors rock
       win+=1
-   elif line == 'C Z':
+      score+=7
+   elif line == 'C Y': #scissors paper
+      loss+=1
+      score+=2
+   elif line == 'C Z': #scissors scissors
       tie+=1
+      score+=6
 
 print "Win:", win
 print "Tie:", tie
 print "Loss:", loss
+print "Score:", score
 f.close()
