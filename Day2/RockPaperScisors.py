@@ -6,23 +6,23 @@ pick = 0
 for line in f:
    line=line.rstrip()
    if line == 'A X':
-      tie = tie+1
+      tie+=1
    elif line == 'A Y':
-      loss = loss+1
+      loss+=1
    elif line == 'A Z':
-      win= win+1
+      win+=1
    elif line == 'B X':
-      win= win+1
+      win+=1
    elif line == 'B Y':
-      tie = tie+1
+      tie+=1
    elif line == 'B Z':
-      loss = loss+1
+      loss+=1
    elif line == 'C X':
-      loss = loss+1
+      loss+=1
    elif line == 'C Y':
-      win= win+1
+      win+=1
    elif line == 'C Z':
-      tie = tie+1
+      tie+=1
 
 print "Win:", win
 print "Tie:", tie
