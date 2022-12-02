@@ -5,33 +5,33 @@ tie  = 0
 score = 0
 for line in f:
    line=line.rstrip()
-   if line == 'A X': #rock rock Need to Lose
+   if line == 'A X': #rock Need to Lose
       tie+=1
-      score+=4
-   elif line == 'A Y': #rock paper Need to Draw
+      score+3  #pick scissors Lose:0, Scissors:3
+   elif line == 'A Y': #rock Need to Draw
       win+=1
-      score+=8
+      score+=4  #pick rock Draw:3, Rock:1
    elif line == 'A Z': #rock scissors Need to Win
       loss+=1
-      score+=3
+      score+=8 #pick paper Win:6, Paper:2
    elif line == 'B X':#paper rock Need to Lose
       loss+=1
-      score+=1
-   elif line == 'B Y': #paper paper Need to Draw
+      score+=1 #pick rock Lose:0, Rock:1
+   elif line == 'B Y': #paper Need to Draw
       tie+=1
-      score+=5
-   elif line == 'B Z': #paper scissors Need to Win
+      score+=5 #pick paper Draw:3, Paper:2
+   elif line == 'B Z': #paper Need to Win
       loss+=1
-      score+=9
+      score+=9 #pick scissors Win:6, Scissors:3
    elif line == 'C X': #scissors rock Need to Lose
       win+=1
-      score+=7
-   elif line == 'C Y': #scissors paper Need to Draw
+      score+=2  #pick paper Lose:0, Paper:2
+   elif line == 'C Y': #scissors Need to Draw
       loss+=1
-      score+=2
-   elif line == 'C Z': #scissors scissors Need to Win
+      score+=6 #pick scissors Draw:3, Scissors:3
+   elif line == 'C Z': #scissors Need to Win
       tie+=1
-      score+=6
+      score+=7 #pick rock Win:6, Rock:1
 
 print "Win:", win
 print "Tie:", tie
