@@ -1,4 +1,4 @@
-f = open("input.txt","rt") #open file in read text mode'
+#Global Variables
 priority = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 line=0
 score=0
@@ -17,27 +17,25 @@ def column_number(label, n):
     return ((26**(n-1)) * position(label[0])) + column_number(label[1:], n-1)
 
 #main code
-for line in f:
-   line=line.rstrip()
-   length=len(line) #Checking string lenght
+with open("input.txt", "r") as file:
+  for line in file:
+    line=line.rstrip()
+    length=len(line) #Checking string lenght
 
-   part1 = slice(0,len(line)//2)
-   part2 = slice(len(line)//2,len(line)) #String slicers
+    part1 = slice(0,len(line)//2)
+    part2 = slice(len(line)//2,len(line)) #String slicers
 
-   string1=line[part1]
-   string2=line[part2]
+    string1=line[part1]
+    string2=line[part2]
 
-   a=list(set(string1)&set(string2)) 
+    a=list(set(string1)&set(string2)) 
 
-   print("The common letters are:")
-   for i in a:
+    print("The common letters are:")
+    for i in a:
       print(i)
       n = len(i)
 
       col_n = column_number(i, n)
       print(col_n)
       score +=col_n
-
 print("Score: ",score)
-#   print ("Line lenght:",length)
-f.close()
