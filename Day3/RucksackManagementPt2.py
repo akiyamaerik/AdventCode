@@ -1,35 +1,30 @@
-#Global Variables
-priority = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-line=0
-score=0
+# Fetch input data
+with open('Input.txt') as input_data:
+    input_data = [line.strip() for line in input_data.readlines()]
 
-# retrieve position of a letter in the alphabet set
-def position(letter):
-  pos = priority.index(letter) + 1
-  return pos
 
-# function to recursively find the column number  
-def column_number(label, n):
-  if n==1:
-    return position(label)
-  else:
-    return ((26**(n-1)) * position(label[0])) + column_number(label[1:], n-1)
+# Part One
 
-#main code
-with open("input.txt", "r") as file:
-#  for line in file:
+priorities_sum = 0
+for line in input_data:
+    first_compartment, second_compartment = line[:int(len(line) / 2)], line[int(len(line) / 2):]
+    in_both_compartments = (list(set(first_compartment).intersection(set(second_compartment)))[0])
+    if in_both_compartments.isupper():
+        priorities_sum += (ord(in_both_compartments) - 38)
+    elif in_both_compartments.islower():
+        priorities_sum += (ord(in_both_compartments) - 96)
 
-  #something string1=
-  #something string2=
-  #something string3=
+print(priorities_sum)
+  
+# Part Two
 
-  #replace for comparing 3 strings  a=list(set(string1)&set(string2)) 
+sum = 0
+for i in range(0, len(input_data), 3):
+    a, b, c = [set(items) for items in input_data[i:i+3]]
+    character = list(a & b & c)[0]
+    if character.isupper():
+        sum += (ord(character) - 38)
+    elif character.islower():
+        sum += (ord(character) - 96)
 
-#  print("The common letters are:")
-#  for i in a:
-#    print(i)
-#   n = len(i)
-
-#    col_n = column_number(i, n)
-#    print(col_n)
-#    score +=col_n
+print(sum)
