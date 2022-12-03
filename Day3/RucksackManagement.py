@@ -1,5 +1,7 @@
-f = open("input.txt","rt") #open file in read text mode
+f = open("input.txt","rt") #open file in read text mode'
+line=0
 for line in f:
    line=line.rstrip()
-print ("Script end")
+   length=len(line)
+   print ("Line lenght:",length)
 f.close()
