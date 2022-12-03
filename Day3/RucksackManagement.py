@@ -1,6 +1,7 @@
 f = open("input.txt","rt") #open file in read text mode'
 priority = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 line=0
+score=0
 
 # retrieve position of a letter in the alphabet set
 def position(letter):
@@ -35,7 +36,8 @@ for line in f:
 
       col_n = column_number(i, n)
       print(col_n)
+      score +=col_n
 
-#   print("Part1",line[part1],"Part2",line[part2])
+print("Score: ",score)
 #   print ("Line lenght:",length)
 f.close()
